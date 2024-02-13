@@ -1,12 +1,20 @@
-from msilib.schema import File
 from os import system
 from flask import Flask, render_template, request, redirect, url_for, session 
-import pandas as pd
-from pymongo import MongoClient
+from pymongo.mongo_client import MongoClient
+from pymongo.server_api import ServerApi
 import datetime;
- 
-# ct stores current time
- 
+
+
+# URI for the Relay2App DataBase
+uri = "mongodb+srv://Relay2User:bcbYDw6QuyDORcit@cluster0.z907n1v.mongodb.net/?retryWrites=true&w=majority"
+
+# Create a new client and connect to the server
+client2 = MongoClient(uri, server_api=ServerApi('1'))
+
+DB = client2["Relay2AppDB"]
+Messages = DB.MesagesCollection
+
+# ct stores current time 
 app = Flask(__name__)
 
 app.secret_key = 'BAD_SECRET_KEY'
@@ -43,6 +51,17 @@ def Send():
     Message_List.append(Message(email=Email_label, ref=Reference_label, msg=Text_or_Message_input_Send, IPAddr=IPAddr))
     print([x.msg for x in  Message_List], "IP address=", IPAddr)
 
+    Messages.insert_one( 
+        {
+        "email"     :Email_label,
+        "ref"       :Reference_label,
+        "msg"       :Text_or_Message_input_Send,
+        "IPAddr"    :IPAddr,
+        "timestamp" :datetime.datetime.now()
+        }
+        )
+
+
     session["PSW"] = "Message Sent, Don't forget the E-mail or Reference"
     #return redirect("/SendPage")   
     return render_template('Start_Page.html', title = session["PSW"] )
@@ -56,12 +75,26 @@ def Receive():
         if(x.ref == Reference_label):
             Current_messages.append(x.msg)
     
-    print(Current_messages)
+    fetched_messages_documents = Messages.find({"ref" :Reference_label})
+    
+    fetched_messages = [x['msg'] for x in fetched_messages_documents ]
 
-    session["PSW"] = "Message fetched and Cleared from the Queue"
-    return render_template('Start_Page.html',  SearchResults = Current_messages)
+    print(fetched_messages)
+
+    session["PSW"] = "Message fetched but still remaining in the queue"
+    #return render_template('Start_Page.html',  SearchResults = Current_messages)
+    return render_template('Start_Page.html',  SearchResults = fetched_messages, title = session["PSW"])
+
     #return redirect("/SendPage", SearchResults = Current_messages)   
-   
+
+@app.route('/Receive_And_Display', methods = ['POST'])
+def Receive_And_Display():
+
+    session["PSW"] = "Now Redirecting to new page"
+    return render_template('Results_page.html',   title = session["PSW"])
+
+
+
 if __name__ == "__main__":
    app.run()
 

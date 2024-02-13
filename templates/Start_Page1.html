@@ -1,0 +1,79 @@
+﻿
+<body class="col-md-offset-10"
+style="margin-left: auto;
+margin-right: auto;
+margin-top: auto;
+" >
+{% block content %}
+
+<!-- CSS only -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="/static/assets/css/custom.css">
+
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"></script>
+
+<div class="col-md-offset-10"
+style="background-image: url('https://upload.wikimedia.org/wikipedia/en/3/36/Akudama_Drive.jpg');  
+height: 100%;
+width: 50%;
+margin-left: auto;
+margin-right: auto;
+margin-top: auto;
+" >
+ 
+  <div class="d-flex justify-content-xl-center text-light">   {% block title %}{{title}}{% endblock%}
+    </div>
+</br>
+</hr>
+ 
+<!-- <div class="col-md-6"> -->
+  
+  <div class="d-flex justify-content-xl-center">  
+<form action="/Send" method="POST">
+    <div class="container-fluid">
+      <label for="Email_Send" class="form-label text-light">Email</label>
+      <input type="email" class="form-control" id="email_input_send" name="Email_input_Send" aria-describedby="emailHelp">
+      <div id="emailHelp" class="form-text"> </div>
+    </div>
+    <div class="container-fluid">
+      <label for="Reference_label_Send" class="form-label text-light">Reference</label>
+      <input type="text" class="form-control" id="reference_input_send" name="Reference_input_Send">
+    </div>
+    <div class="container-fluid">
+      <label for="Text_or_Message_Label_Send" class="form-label text-light">Text or Message</label>
+      <input type="text" class="form-control" id="text_or_message_input_send" name="Text_or_Message_input_Send">
+      <div id="emailHelp" class="form-text"> </div>
+      <button type="submit" class="btn btn-primary">Send</button> 
+    </div>
+<!--    <div class="container-fluid">
+    </div> -->
+
+</form>
+</div>
+
+<div class="d-flex justify-content-xl-center">
+<form action="/Receive" method="POST">
+  <div class="container-fluid">
+    <label for="Reference_Receive" class="form-label text-light">Reference</label>
+    <input type="text" class="form-control" id="Reference_Receive" name="reference_receive">
+    <div id="emailHelp" class="form-text"> </div>
+    <button type="submit" class="btn btn-primary" value="Receive">Receive</button>
+  </div>
+   
+ 
+</form>
+</div>
+
+<div class="d-flex justify-content-center">
+{% for item in SearchResults %}
+     <div class="d-flex justify-content-center">{{ item|safe }}</div> 
+{% endfor %}
+
+{% endblock%}
+</div>
+
+<div class="fixed-bottom d-flex justify-content-xl-center text-light">Copyright MangaDataShare 2023</div>
+</div>  
+
+</body>

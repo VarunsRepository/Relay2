@@ -1,0 +1,93 @@
+﻿ <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico">
+
+  <title>MangaDataTransfer</title>
+
+  <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/sign-in/">
+
+  <!-- Bootstrap core CSS -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+  <!-- Custom styles for this template -->
+  <link href="https://getbootstrap.com/docs/4.0/examples/sign-in/signin.css" rel="stylesheet">
+</head>
+
+<body class="text-center" 
+style = "background-image: url('https://r4.wallpaperflare.com/wallpaper/968/402/510/rick-and-morty-adult-swim-cartoon-space-wallpaper-82b3ad62016fd14ae8ad651fccb1d95a.jpg');
+background-repeat: no-repeat;
+background-size: 100% 100%;">
+
+{% block content %}
+
+ 
+<div class=".container-fluid" >
+ 
+  <div class="d-flex justify-content-xl-center text-light">   {% block title %}{{title}}{% endblock%}
+    </div>
+</br>
+</hr>
+ 
+<!-- <div class="col-md-6"> -->
+  
+  <div class="d-flex justify-content-xl-center">  
+<form action="/Send" method="POST" class="form-signin">
+    <div class="container-fluid">
+     <!-- <label for="Email_Send" class="form-label text-light">Email</label> -->
+      <input type="email" class="form-control rounded-right bg-transparent"  placeholder="Email(Optional)" autofocus  id="email_input_send" name="Email_input_Send" aria-describedby="emailHelp">
+      <div id="emailHelp" class="form-text"> </div>
+    </div>
+    <div class="container-fluid">
+      <!-- <label for="Reference_label_Send" class="form-label text-light">Reference</label>   -->
+      <input type="text" class="form-control" placeholder="Message Reference" required autofocus  id="reference_input_send" name="Reference_input_Send">
+    </div>
+    <div class="container-fluid">
+    <!--  <label for="Text_or_Message_Label_Send" class="form-label text-light">Text or Message</label>  -->
+      <textarea class="form-control" placeholder="Text or Message" required autofocus id="text_or_message_input_send" name="Text_or_Message_input_Send"></textarea>
+        <div id="emailHelp" class="form-text"> </div>
+      <button type="submit" class="btn btn-lg btn-primary btn-block" >Send</button> 
+    </div>
+<!--    <div class="container-fluid">
+    </div> -->
+
+</form>
+</div>
+
+<div class="d-flex justify-content-xl-center">
+<form action="/Receive" method="POST" class="form-signin">
+  <div class="container-fluid">
+    <!-- <label for="Reference_Receive" class="form-label text-light">Reference</label>  -->
+    <input type="text" class="form-control"  placeholder="Message Reference" required autofocus  id="Reference_Receive" name="reference_receive">
+    <div id="emailHelp" class="form-text"> </div>
+    <button type="submit"  class="btn btn-lg btn-success btn-block"  value="Receive">Receive</button>
+    
+    <textarea class="form-control" placeholder="Your fetched Message will appear here" id="text_or_message_input_receive" name="Text_or_Message_input_receive">{% for item in SearchResults %}{{ item|safe }}{% endfor %}{% endblock%}</textarea>
+
+  </div>
+   
+ 
+</form>
+</div>
+
+<div class="d-flex justify-content-center">
+ 
+
+
+</br>
+
+<p class="mt-5 mb-3 text-muted">© MangaDataShare 2022-2023</p>
+</div>    
+</body>
+
+ 
+  
+  <!-- <div class="fixed-bottom d-flex justify-content-xl-center text-light">Copyright MangaDataShare 2023</div> -->
+   
+ 

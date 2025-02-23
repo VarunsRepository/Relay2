@@ -1,9 +1,10 @@
 <h2>Relay2App is a project in development that aims at pattern recognition in a semi-structured datasets.</h2>
-
 The app is currently available in production using the following endpoints :
 https://varunnsite.pythonanywhere.com
 https://varunnsite.pythonanywhere.com/Console
-
+<img width="1919" alt="image" src="https://github.com/user-attachments/assets/8e6c69ac-8fa3-4578-a363-ef79dd7b9b09" />
+<img width="1919" alt="image" src="https://github.com/user-attachments/assets/038ed02e-ea6b-49f4-8474-8a0acdb20ced" />
+ 
 The services are also available using REST APIs.
 The app itself is made up of 2 parts - Relay2App as well as MangaDataProcessing System.
 The ultimate Objective of the project is to identify patterns in semi-structured data supplied in the form of a raw text file. The patterns can range 

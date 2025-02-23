@@ -1,5 +1,4 @@
-
-Relay2App is a project in development that aims at pattern recognition in a semi-structured datasets.
+<h2>Relay2App is a project in development that aims at pattern recognition in a semi-structured datasets.</h2>
 
 The app is currently available in production using the following endpoints :
 https://varunnsite.pythonanywhere.com

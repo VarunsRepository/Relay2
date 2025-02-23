@@ -9,14 +9,14 @@ The services are also available using REST APIs.
 The app itself is made up of 2 parts - Relay2App as well as MangaDataProcessing System.
 The ultimate Objective of the project is to identify patterns in semi-structured data supplied in the form of a raw text file. The patterns can range 
 
-<h3>Relay2App</h3>h3>
+<h3>Relay2App</h3> 
 Relay2App is a message processing System that was initially build to relay ad-hoc messages/data to a listener Server for interim-storage instant-retrieval.
 
 The App has classic Web page layout that is optimised as per device screen size.
 It also has an online terminal which gives the look and feel of an old-school terminal essentially exhibiting the same functionality.
 There are 2 REST APIs also available which can Send as well as Receive messages.
 
-Architecture:
+<h4>Architecture:</h4>
 The app itself is build using flask. Flask is a micro web framework written in Python that can be used to rapidly develop apps with relatively less hassle on the web/UI components, thus ensuring that the core-focus can be maintained on the application business logic enhancement while a descent Web-UI is still available.
 The Colorful front end web-UI/homepage is build using HTML/CSS with bootstrap to manage the layout. 
 since its a flask app, the entire app can be condensed to a single file.

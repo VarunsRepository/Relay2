@@ -6,7 +6,7 @@ import datetime;
 
 
 # URI for the Relay2App DataBase
-uri = "mongodb+srv://Relay2User:bcbYDw6QuyDORcit@cluster0.z907n1v.mongodb.net/?retryWrites=true&w=majority"
+uri = '###DataBase connection String Redacted###'
 
 # Create a new client and connect to the server
 client2 = MongoClient(uri, server_api=ServerApi('1'))
